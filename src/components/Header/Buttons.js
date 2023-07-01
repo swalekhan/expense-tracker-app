@@ -3,9 +3,6 @@ import Button from "@mui/material/Button";
 import { FormControlLabel, Stack, Switch } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { authActions } from "../../store/auth-slice";
-import { verifyMail } from "../../store/auth-thunks";
-// import { update } from "../../store/auth-thunks";
 import { themeActions } from "../../store/theme-slice";
 import { styled } from "@mui/material/styles";
 import { logout } from "../auth/AuthSlice";
@@ -59,8 +56,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const Buttons = () => {
   const dispatch = useDispatch();
-  const email  = useSelector((state) => state.auth.token);
-  const isProUser = 88//useSelector((state) => state.expenses.isProUser);
+  const email = useSelector((state) => state.auth.token);
   const navigate = useNavigate()
 
 
@@ -69,12 +65,7 @@ const Buttons = () => {
     navigate("/Auth/SignUpPage")
   }
 
-  function verifyMailHandler() {
-    dispatch(verifyMail());
-  }
-
   function updateHandler() {
-    // dispatch(update());
     navigate("/Profile")
   }
 
@@ -90,7 +81,7 @@ const Buttons = () => {
           color="inherit"
           size="small"
           component={Link}
-          to="/auth">
+          to="/Auth/SignUpPage">
           Signup
         </Button>
       )}
@@ -110,27 +101,17 @@ const Buttons = () => {
           variant="outlined"
           color="inherit"
           size="small"
-          onClick={verifyMailHandler}>
-          verify email
-        </Button>
-      )}
-      {email && (
-        <Button
-          variant="outlined"
-          color="inherit"
-          size="small"
           onClick={updateHandler}>
-          update
+          Profile
         </Button>
       )}
 
-      {isProUser && (
-        <FormControlLabel
-          onChange={themeHandler}
-          control={<MaterialUISwitch />}
-          sx={{ border: "1px solid white", ml: "1rem", borderRadius: "5px" }}
-        />
-      )}
+      <FormControlLabel
+        onChange={themeHandler}
+        control={<MaterialUISwitch />}
+        sx={{ border: "1px solid white", ml: "1rem", borderRadius: "5px" }}
+      />
+
     </Stack>
   );
 };

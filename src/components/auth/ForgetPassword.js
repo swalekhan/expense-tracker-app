@@ -9,19 +9,17 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postForgetPassworAsync } from "./AuthSlice";
-import { Link, useNavigate } from "react-router-dom";
-// import authenticateUser, { passwordReset } from "../store/auth-thunks";
+import { Link} from "react-router-dom";
 
 
 export default function ForgetPassword() {
     const [formData, setFormData] = useState({ email: ""});
     const dispatch = useDispatch();
-    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(postForgetPassworAsync(formData))
-        navigate("/")
+        setFormData({email:""})
     }
 
     const handleChange = (event) => {

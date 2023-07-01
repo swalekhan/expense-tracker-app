@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-// import Typography from "@mui/material/Typography";
 import { Box,InputLabel, Select } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -48,16 +47,16 @@ const AddExpense = () => {
         navigte("/")
     }
 
-
+    
     return (
         <>
-            <Box component="form" onSubmit={submitHandler} mb="1.5rem">
+            <Box component="form" onSubmit={submitHandler} m="5rem">
                 <Grid container spacing={3} alignItems="center" justifyContent="center">
                     <Grid item xs={11}>
                         <TextField
                             name="description"
                             id="description"
-                            label="Expense Description"
+                            label="Explain Description within 40 words"
                             value={formData.description}
                             onChange={changeHandler}
                             type="text"
@@ -92,6 +91,7 @@ const AddExpense = () => {
                                 <MenuItem value="fuel">Fuel</MenuItem>
                                 <MenuItem value="food">Food</MenuItem>
                                 <MenuItem value="clothes">Clothes</MenuItem>
+                                <MenuItem value="others">other</MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>

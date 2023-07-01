@@ -14,21 +14,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 export default function SignIn() {
-  const token = useSelector(state=>state.auth.token)
-  const [formData, setFormData] = useState({ email: "", password: "" ,returnSecureToken: true,});
+  const token = useSelector(state => state.auth.token)
+  const [formData, setFormData] = useState({ email: "", password: "", returnSecureToken: true, });
   const dispatch = useDispatch();
- const navigate = useNavigate()
-
-  useEffect(()=>{
-   if(token){
-    navigate("/")
-   }
-  },[token,navigate])
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(postSignInDataAsync(formData))
-    navigate("/")
   }
 
   const handleChange = (event) => {
@@ -37,6 +30,12 @@ export default function SignIn() {
       [event.target.name]: event.target.value,
     });
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/")
+    }
+  }, [token, navigate])
 
   return (
 
@@ -89,14 +88,14 @@ export default function SignIn() {
             Sign In
           </Button>
           <Grid container>
-          <Grid item xs={12} display="flex" justifyContent="center" margin="6px" fontSize="15px">
+            <Grid item xs={12} display="flex" justifyContent="center" margin="6px" fontSize="15px">
               <Link to="/auth/ForgetPasswordPage">Forget Password</Link>
             </Grid>
             <Grid item xs={12} display="flex" justifyContent="space-between">
               <p>Create a new account</p>
               <Link to="/Auth/SignUpPage">Sign UP</Link>
             </Grid>
-           
+
           </Grid>
         </Box>
       </Box>

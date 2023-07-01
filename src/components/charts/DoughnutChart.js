@@ -7,15 +7,14 @@ import { useSelector } from "react-redux";
 
 const DoughnutChart = ({ year }) => {
   const [categoryWiseExpenses, setCategoryWiseExpenses] = useState([]);
-  const {items} = useSelector((state) => state.expense);
+  const { items } = useSelector((state) => state.expense);
   const isDarkThemeEnabled = useSelector((state) => state.theme.isDarkThemeEnabled);
 
-  // console.log(expenses)
-
   useEffect(() => {
-    let food = 0,
-      fuel = 0,
-      clothes = 0;
+    let food = 0;
+    let fuel = 0;
+    let clothes = 0;
+    let others = 0;
 
     for (const key in items) {
       const filterYear = new Date(items[key].dateTime).getFullYear();
@@ -31,12 +30,15 @@ const DoughnutChart = ({ year }) => {
           case "clothes":
             clothes += +items[key].amount;
             break;
+          case "others":
+            others += +items[key].amount;
+            break;
           default:
             break;
         }
       }
     }
-    setCategoryWiseExpenses([food, clothes, fuel]);
+    setCategoryWiseExpenses([food, clothes, fuel, others]);
   }, [items, year]);
 
   let bgColor = "initial";
@@ -47,25 +49,26 @@ const DoughnutChart = ({ year }) => {
   }
 
   const doughnutData = {
-    labels: ["food", "clothes", "fuel"],
+    labels: ["food", "clothes", "fuel", "others"],
     datasets: [
       {
         data: categoryWiseExpenses,
         backgroundColor: [
           "rgb(0, 255, 0, 0.7)",
           "rgba(99, 102, 241, 1)",
-          "rgb(255, 0, 0, 0.85)",
+          "rgba(255, 0, 0, 0.85)",
+          "  rgb(255,196,12)",
         ],
-        borderWidth: 1,
+        borderWidth: 0,
         borderColor: "grey",
-        spacing: 4,
+        spacing: 1,
       },
     ],
   };
 
   const doughnutOptions = {
     maintainAspectRatio: false,
-    cutout: 88,
+    cutout: 1,
     plugins: {
       legend: {
         position: "bottom",
@@ -83,12 +86,9 @@ const DoughnutChart = ({ year }) => {
       <Card
         sx={{
           borderRadius: "30px",
-          boxShadow: "0 0 15px grey",
+          boxShadow: "0px 0px 5px 0px #ccc",
           p: "1rem",
           height: "18rem",
-          display: "center",
-       
-          justifyContent: "center",
           bgcolor: bgColor,
           color: textColor,
         }}
