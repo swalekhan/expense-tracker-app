@@ -38,7 +38,7 @@ const Cards = () => {
   const { items } = useSelector((state) => state.expense);
   const isDarkThemeEnabled = useSelector((state) => state.theme.isDarkThemeEnabled);
   const navigate = useNavigate()
-  const totalExpenses = items.reduce((a, b) => a + Number(b.amount), 0)
+  const totalExpenses = items?.reduce((a, b) => a + Number(b.amount), 0)
 
   let bgColor = "initial";
   let textColor = "initial";
@@ -47,6 +47,7 @@ const Cards = () => {
     textColor = "white";
   }
 
+  console.log(items?.length)
   return (
     <>
       <Container maxWidth="lg" sx={{ mt: "3rem" }}>
@@ -143,7 +144,7 @@ const Cards = () => {
                   float: "right",
                 }}
               />
-              <Button startIcon={<DownloadForOfflineIcon />} variant="outlined" color="success" size="medium" sx={{ mt: "2rem", color: "lime" }} disabled={!Object.keys(items).length} onClick={() => { exportToExcel(items) }}>
+              <Button startIcon={<DownloadForOfflineIcon />} variant="outlined" color="success" size="medium" sx={{ mt: "2rem", color: "lime" }} disabled={items?.length<1} onClick={() => exportToExcel(items) }>
                 Excel
               </Button>
             </Card>

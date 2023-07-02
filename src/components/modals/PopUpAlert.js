@@ -1,24 +1,14 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Snackbar, Alert } from "@mui/material";
-import { popUpAlertHandler } from "../auth/AuthSlice";
-import { useState } from "react";
 
 const PopUpAlert = () => {
-  const [isAlert, setIsAlert] = useState(true)
-  const {alert} = useSelector((state) => state.auth);
-  const {status} = useSelector(state=>state.expense)
-  const dispatch = useDispatch()
-
-  function onCloseHandler() {
-    setIsAlert(!isAlert)
-  }
+  const { status } = useSelector(state => state.expense)
 
   return (
     <>
       <Snackbar
-        open={status ==="pendding"}
+        open={status === "pendding"}
         autoHideDuration={5000}
-        onClose={onCloseHandler}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
         <Alert

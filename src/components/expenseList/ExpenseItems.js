@@ -26,7 +26,7 @@ const ExpenseItems = ({ items }) => {
     }
 
     // if items empty..............
-    if(items.length<1){
+    if(items?.length<1){
         return <NoItem/>
     }
     return (

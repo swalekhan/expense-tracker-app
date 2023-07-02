@@ -21,7 +21,7 @@ const Header = () => {
             Expense Tracker
           </Typography>
           <Box ml="auto">
-        
+
             <Buttons />
           </Box>
         </Toolbar>

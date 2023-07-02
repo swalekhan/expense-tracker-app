@@ -9,7 +9,7 @@ a {
   color: inherit;
 }
 
-
+/* 
 .profile {
   padding: 40px;
 
@@ -81,4 +81,105 @@ a {
 
 .primary {
   background-color: rgb(7, 134, 237);
+} */
+
+.profile{
+  margin: 40px;
+}
+
+.account-settings .user-profile {
+  margin: 0 0 1rem 0;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.account-settings .user-profile .user-avatar {
+  margin: 0 0 1rem 0;
+}
+
+.account-settings .user-profile .user-avatar img {
+  width: 90px;
+  height: 90px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.account-settings .user-profile h5.user-name {
+  margin: 0 0 0.5rem 0;
+}
+
+.account-settings .user-profile h6.user-email {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.account-settings .about {
+  margin: 1rem 0 0 0;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.address{
+  margin-top: 10px;
+}
+.address input{
+  height: 100px;
+}
+.card {
+  background: #f8f8f8;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: .825rem;
+  background: #f1f1f1;
+  border: 0px;
+  color: #333;
+}
+
+.text-right{
+  text-align: end;
+  margin: 20px 20px 0px 0px;
+}
+
+.btn-secondary{
+  margin-right: 20px;
+}
+
+.form-group input{
+  font-size: 18px;
+}
+
+@media (max-width:450px){
+  .headerHeading{
+    font-size: 12px;
+  }
+  .profile{
+    margin: 10px;
+  }
+  .avtar_section{
+    margin: 20px 0px;
+  }
+}
+
+@media (max-width:1020px){
+  .profile{
+    margin: 20px;
+  }
+  .avtar_section{
+    margin: 20px 0px;
+  }
+}
+
+.css-5y4zh4-MuiTypography-root{
+  color: red;
 }

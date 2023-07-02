@@ -10,7 +10,6 @@ export const expenseGetDataAsync = createAsyncThunk(
     'expense/getData',
     async (data) => {
         const response = await expenseGetData(data)
-        console.log(response)
         return response
     }
 )

@@ -57,7 +57,7 @@ const DoughnutChart = ({ year }) => {
           "rgb(0, 255, 0, 0.7)",
           "rgba(99, 102, 241, 1)",
           "rgba(255, 0, 0, 0.85)",
-          "  rgb(255,196,12)",
+          " rgb(255,196,12)",
         ],
         borderWidth: 0,
         borderColor: "grey",

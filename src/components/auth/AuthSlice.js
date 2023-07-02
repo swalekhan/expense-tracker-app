@@ -10,7 +10,6 @@ export const postSignUpDataAsync = createAsyncThunk(
     'auth/SignUp',
     async (data) => {
         const response = await postSignUpData(data)
-        console.log(response)
         return response
     }
 )
@@ -19,7 +18,6 @@ export const postSignInDataAsync = createAsyncThunk(
     'auth/SignIn',
     async (data) => {
         const response = await postSignInData(data)
-        console.log(response, "siggg")
         return response
     }
 )
