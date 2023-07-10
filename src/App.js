@@ -7,12 +7,22 @@ import SignUpPage from "./Pages/Auth/SignupPage";
 import AddExpense from "./components/expenseList/AddExpense";
 import HomePage from "./Pages/HomePage";
 import Profile from "./Pages/Profile";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PrivateComponent from "./components/PrivateComponent/PrivateComponent";
 import PopUpAlert from "./components/modals/PopUpAlert";
+import { useEffect } from "react";
+import { expenseGetDataAsync } from "./components/expenseList/ExpenseSlice";
 
 function App() {
   const { isDarkThemeEnabled } = useSelector((state) => state.theme);
+  const token = useSelector(state => state.auth.token)
+  const dispatch = useDispatch()
+  const email = token?.email
+
+  // .......fetch data...................
+  useEffect(() => {
+    email && dispatch(expenseGetDataAsync(email))
+  }, [dispatch, email])
 
   let color = "initial";
   if (isDarkThemeEnabled) {

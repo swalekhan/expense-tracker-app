@@ -1,4 +1,4 @@
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -119,7 +119,7 @@ const Cards = () => {
               </Button>
             </Card>
           </Grid>
-          <Grid item xs={14} sm={8} lg={4}>
+          <Grid item xs={12} sm={8} lg={4}>
 
 
             <Card
@@ -144,7 +144,7 @@ const Cards = () => {
                   float: "right",
                 }}
               />
-              <Button startIcon={<DownloadForOfflineIcon />} variant="outlined" color="success" size="medium" sx={{ mt: "2rem", color: "lime" }} disabled={items?.length<1} onClick={() => exportToExcel(items) }>
+              <Button startIcon={<DownloadForOfflineIcon />} variant="outlined" color="success" size="medium" sx={{ mt: "2rem", color: "lime" }} disabled={items?.length < 1} onClick={() => exportToExcel(items)}>
                 Excel
               </Button>
             </Card>

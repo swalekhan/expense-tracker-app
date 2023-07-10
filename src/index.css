@@ -9,79 +9,6 @@ a {
   color: inherit;
 }
 
-/* 
-.profile {
-  padding: 40px;
-
-}
-
-.profile h2 {
-  margin: 40px;
-}
-
-.profile_inner_div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.profile_inner_div form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.form_group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.form_group label {
-  color: #666;
-  font-size: 15px;
-}
-
-.form_group input {
-  padding: 5px;
-  outline: 0px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.textarea {
-  grid-column: 1/-1;
-}
-
-.textarea textarea {
-  height: 80px;
-  padding: 5px;
-  outline: 0px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.profile_inner_div form input {
-  padding: 10px;
-}
-
-.btn {
-  display: inline-block;
-  border: 0px;
-  outline: 0px;
-  border-radius: 5px;
-  width: 100%;
-  padding: 10px;
-  font-size: 20px;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: #fff;
-}
-
-.primary {
-  background-color: rgb(7, 134, 237);
-} */
 
 .profile{
   margin: 40px;
@@ -157,6 +84,11 @@ a {
 
 .form-group input{
   font-size: 18px;
+}
+
+.isUpdated{
+  color: green;
+  font-weight: 700;
 }
 
 @media (max-width:450px){

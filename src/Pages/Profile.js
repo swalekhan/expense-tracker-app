@@ -5,6 +5,7 @@ import axios from "axios";
 const Profile = () => {
     const token = useSelector(state => state.auth.token)
     const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "" })
+    const [isUpdated, setIsUpdated] = useState(false)
     const userName = formData?.firstName + " " + formData?.lastName
 
 
@@ -14,6 +15,7 @@ const Profile = () => {
             const data = res?.data
             const fullName = data?.displayName?.split(" ")
             setFormData({ email: data?.email, firstName: fullName[0], lastName: fullName[1] })
+            setIsUpdated(true)
         } catch (error) {
             console.log(error, "erroo")
         }
@@ -33,7 +35,6 @@ const Profile = () => {
 
     useEffect(() => {
         fetchProfileData()
-        console.log("fetttt")
     }, [fetchProfileData])
 
 
@@ -61,7 +62,7 @@ const Profile = () => {
                                     </div>
                                     <div className="about">
                                         <h5 className="mb-2 text-primary">About</h5>
-                                        <p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                                        <p>I'm {userName}. I strive to bring my best, leveraging my skills, knowledge, and dedication to achieve excellence.".</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,10 +104,11 @@ const Profile = () => {
                                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-12" >
                                         <div className="form-group address">
                                             <label htmlFor="zIp">Address</label>
-                                            <input type="text" className="form-control" id="zIp" placeholder="Address is readOnly. you can not update it." readOnly/>
+                                            <input type="text" className="form-control" id="zIp" placeholder="Address is readOnly. you can not update it." readOnly />
                                         </div>
                                     </div>
                                 </div>
+                                {isUpdated && <p className="isUpdated">profile is updated successfully</p>}
                                 <div className="row gutters">
                                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div className="text-right">

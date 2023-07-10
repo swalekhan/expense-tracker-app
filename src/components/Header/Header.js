@@ -3,6 +3,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import Buttons from "./Buttons";
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -18,7 +19,7 @@ const Header = () => {
       >
         <Toolbar>
           <Typography variant="h5" component="h1" color="inherit" fontWeight="bold">
-            Expense Tracker
+           <Link to= "/"> Expense Tracker</Link>
           </Typography>
           <Box ml="auto">
 
