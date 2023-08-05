@@ -1,26 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { postForgetPasswordData, postSignInData, postSignUpData } from "./Auth.api";
+import { postForgetPasswordData, postSign } from "./Auth.api";
 
 const initialState = {
     token: JSON.parse(localStorage.getItem("token")),
     status: null,
+    alert: { msg: "", status: "info" }
 };
 
-export const postSignUpDataAsync = createAsyncThunk(
+export const postSignDataAsync = createAsyncThunk(
     'auth/SignUp',
-    async (data) => {
-        const response = await postSignUpData(data)
-        return response
+    async (data, { rejectWithValue }) => {
+        try {
+            const response = await postSign(data)
+            return response
+        } catch (err) {
+            return rejectWithValue(err)
+        }
     }
 )
 
-export const postSignInDataAsync = createAsyncThunk(
-    'auth/SignIn',
-    async (data) => {
-        const response = await postSignInData(data)
-        return response
-    }
-)
 
 export const postForgetPassworAsync = createAsyncThunk(
     'auth/forgetPassword',
@@ -42,28 +40,31 @@ export const authSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-            .addCase(postSignUpDataAsync.pending, (state) => {
+            .addCase(postSignDataAsync.pending, (state) => {
                 state.status = "pendding"
             })
-            .addCase(postSignUpDataAsync.fulfilled, (state, action) => {
+            .addCase(postSignDataAsync.fulfilled, (state, action) => {
                 state.token = action.payload
                 state.status = "success"
+                state.alert.status = "success"
+                state.alert.msg = "Welcome " + action.payload.displayName?.split(" ")[0]
+
             })
-            .addCase(postSignInDataAsync.pending, (state) => {
-                state.status = "pendding"
-            })
-            .addCase(postSignInDataAsync.fulfilled, (state, action) => {
-                state.token = action.payload
-                state.status = "success"
+            .addCase(postSignDataAsync.rejected, (state, action) => {
+                state.status = "rejected"
+                state.alert.status = "error"
+                state.alert.msg = action.payload
             })
             .addCase(postForgetPassworAsync.pending, (state) => {
                 state.status = "pendding"
             })
             .addCase(postForgetPassworAsync.fulfilled, (state) => {
                 state.status = "success"
+                state.alert.status = "success"
+                state.alert.msg = "Please check your email"
             })
     },
 });
 
-export const { logout} = authSlice.actions
+export const { logout } = authSlice.actions
 export default authSlice.reducer

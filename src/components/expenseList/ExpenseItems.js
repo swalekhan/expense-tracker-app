@@ -10,7 +10,6 @@ const ExpenseItems = ({ items }) => {
     const isDarkThemeEnabled = useSelector((state) => state.theme.isDarkThemeEnabled);
 
     function deleteHandler(id) {
-        console.log({ email, id })
         dispatch(expenseDeleteDataAsync({ email, id }));
     }
 

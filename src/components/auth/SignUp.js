@@ -7,27 +7,23 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Container from "@mui/material/Container";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import authenticateUser, { passwordReset } from "../store/auth-thunks";
-import { postSignUpDataAsync} from "./AuthSlice";
+import { useDispatch } from "react-redux";
+import { postSignDataAsync } from "./AuthSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function SignUp() {
-  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: ""});
-  const token = useSelector(state => state.auth.token)
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (token) {
-      navigate("/")
-    }
-  }, [token, navigate])
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(postSignUpDataAsync({...formData,displayName:formData?.firstName+" "+formData?.lastName }))
+    dispatch(postSignDataAsync({ url: ":signUp?key=AIzaSyC5Q8mjUSkbayV7izSHVIjQnd5-ndxl1gk", data: { ...formData, displayName: formData?.firstName + " " + formData?.lastName } }))
+      .then((res) => {
+        if (res?.meta?.requestStatus === "fulfilled") {
+          navigate("/")
+        }
+      })
   };
 
   const handleChange = (event) => {

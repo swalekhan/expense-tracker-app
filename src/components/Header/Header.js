@@ -18,7 +18,7 @@ const Header = () => {
         }}
       >
         <Toolbar>
-          <Typography variant="h5" component="h1" color="inherit" fontWeight="bold">
+          <Typography variant="h5" component="h1" color="inherit" fontWeight="bold" sx={{fontSize:"16px"}}>
            <Link to= "/"> Expense Tracker</Link>
           </Typography>
           <Box ml="auto">

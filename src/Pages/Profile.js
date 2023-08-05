@@ -11,7 +11,7 @@ const Profile = () => {
 
     const updateHandler = async (e) => {
         try {
-            let res = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDXcVIOVTYP4MQZwzkEHgb-OgLvYj0Rl28", { displayName: userName, email: formData?.email, idToken: token?.idToken });
+            let res = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyC5Q8mjUSkbayV7izSHVIjQnd5-ndxl1gk", { displayName: userName, email: formData?.email, idToken: token?.idToken });
             const data = res?.data
             const fullName = data?.displayName?.split(" ")
             setFormData({ email: data?.email, firstName: fullName[0], lastName: fullName[1] })
@@ -24,7 +24,7 @@ const Profile = () => {
 
     const fetchProfileData = useCallback(async () => {
         try {
-            const res = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDXcVIOVTYP4MQZwzkEHgb-OgLvYj0Rl28", { idToken: token?.idToken })
+            const res = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyC5Q8mjUSkbayV7izSHVIjQnd5-ndxl1gk", { idToken: token?.idToken })
             const data = res?.data?.users[0]
             const fullName = data?.displayName?.split(" ")
             setFormData({ email: data?.email, firstName: fullName[0], lastName: fullName[1] })
@@ -104,7 +104,7 @@ const Profile = () => {
                                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-12" >
                                         <div className="form-group address">
                                             <label htmlFor="zIp">Address</label>
-                                            <input type="text" className="form-control" id="zIp" placeholder="Address is readOnly. you can not update it." readOnly />
+                                            <input type="text" className="form-control" id="zIp" placeholder="Address is readOnly." readOnly />
                                         </div>
                                     </div>
                                 </div>

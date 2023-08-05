@@ -47,12 +47,11 @@ const Cards = () => {
     textColor = "white";
   }
 
-  console.log(items?.length)
   return (
     <>
       <Container maxWidth="lg" sx={{ mt: "3rem" }}>
         <Grid container spacing={3}>
-          <Grid item xs={14} sm={8} lg={4}>
+          <Grid item xs={12} sm={8} md={4} lg={4}>
             <Card
               sx={{
                 borderRadius: "30px",
@@ -85,7 +84,7 @@ const Cards = () => {
               </Typography>
             </Card>
           </Grid>
-          <Grid item xs={14} sm={8} lg={4}>
+          <Grid item xs={14} sm={8} md={4} lg={4}>
             <Card
               sx={{
                 borderRadius: "30px",
@@ -119,7 +118,7 @@ const Cards = () => {
               </Button>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={8} lg={4}>
+          <Grid item xs={12} sm={8} md={4} lg={4}>
 
 
             <Card

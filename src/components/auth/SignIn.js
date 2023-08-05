@@ -6,22 +6,26 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Container from "@mui/material/Container";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { postSignInDataAsync } from "./AuthSlice";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postSignDataAsync } from "./AuthSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 
 
 export default function SignIn() {
-  const token = useSelector(state => state.auth.token)
   const [formData, setFormData] = useState({ email: "", password: "", returnSecureToken: true, });
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(postSignInDataAsync(formData))
+    dispatch(postSignDataAsync({ url: ":signInWithPassword?key=AIzaSyC5Q8mjUSkbayV7izSHVIjQnd5-ndxl1gk", data: formData }))
+      .then((res) => {
+        if (res?.meta?.requestStatus === "fulfilled") {
+          navigate("/")
+        }
+      })
   }
 
   const handleChange = (event) => {
@@ -30,12 +34,6 @@ export default function SignIn() {
       [event.target.name]: event.target.value,
     });
   };
-
-  useEffect(() => {
-    if (token) {
-      navigate("/")
-    }
-  }, [token, navigate])
 
   return (
 
